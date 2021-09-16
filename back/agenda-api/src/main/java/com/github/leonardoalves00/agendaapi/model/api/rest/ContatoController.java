@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/contatos")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ContatoController {
 	
 	private final ContatoRepository repository;
@@ -28,7 +30,7 @@ public class ContatoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Contato save(@RequestBody Contato contato){
-		return save(contato);
+		return repository.save(contato);
 	}
 	
 	@DeleteMapping("{id}")

@@ -3,21 +3,21 @@
     <span>Contatos</span>
   </mat-toolbar>
 </p>
-<form >
+<form [formGroup]="formulario" (ngSubmit)="submit()">
 
   <mat-form-field class="campo-full"  appearance="fill">
     <mat-label>Nome: </mat-label>
-    <input matInput placeholder="Digite seu nome" >
+    <input formControlName="nome" matInput placeholder="Digite seu nome" >
   </mat-form-field>
 
   <mat-form-field class="campo-full"  appearance="fill">
     <mat-label>Email: </mat-label>
-    <input matInput placeholder="Digite seu Email" >
+    <input formControlName="email" matInput placeholder="Digite seu Email" >
   </mat-form-field>
 
   <div class="example-button-row">
-    <button mat-button color="primary">Adicionar</button>
+    <button [disabled]="!formulario.valid" mat-button color="primary">Adicionar</button>
   </div>
 
-
 </form>
+
